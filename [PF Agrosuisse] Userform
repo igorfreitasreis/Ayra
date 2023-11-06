@@ -1,0 +1,204 @@
+Private Sub ComboGrupo_Change()
+Dim totLIN As Long
+Dim LIN As Long
+
+If ComboGrupo.Text = Planilha3.Range("F4").Text Then
+
+totLIN = Planilha3.Range("f" & Rows.Count).End(xlUp).Row
+ComboSubGrupo.Clear
+
+For LIN = 5 To totLIN
+        ComboSubGrupo.AddItem Planilha3.Cells(LIN, 6)
+
+Next LIN
+
+End If
+
+If ComboGrupo.Text = Planilha3.Range("H4").Text Then
+ 
+totLIN = Planilha3.Range("h" & Rows.Count).End(xlUp).Row
+ComboSubGrupo.Clear
+
+For LIN = 5 To totLIN
+        ComboSubGrupo.AddItem Planilha3.Cells(LIN, 8)
+    
+Next LIN
+
+End If
+
+If ComboGrupo.Text = Planilha3.Range("J4").Text Then
+
+totLIN = Planilha3.Range("j" & Rows.Count).End(xlUp).Row
+ComboSubGrupo.Clear
+
+For LIN = 5 To totLIN
+        ComboSubGrupo.AddItem Planilha3.Cells(LIN, 10)
+
+Next LIN
+
+End If
+
+If ComboGrupo.Text = Planilha3.Range("L4").Text Then
+
+totLIN = Planilha3.Range("l" & Rows.Count).End(xlUp).Row
+ComboSubGrupo.Clear
+
+For LIN = 5 To totLIN
+        ComboSubGrupo.AddItem Planilha3.Cells(LIN, 12)
+
+Next LIN
+
+End If
+
+If ComboGrupo.Text = Planilha3.Range("N4").Text Then
+
+totLIN = Planilha3.Range("N" & Rows.Count).End(xlUp).Row
+ComboSubGrupo.Clear
+
+For LIN = 5 To totLIN
+        ComboSubGrupo.AddItem Planilha3.Cells(LIN, 14)
+
+Next LIN
+
+End If
+
+If ComboGrupo.Text = Planilha3.Range("P4").Text Then
+
+totLIN = Planilha3.Range("P" & Rows.Count).End(xlUp).Row
+ComboSubGrupo.Clear
+
+For LIN = 5 To totLIN
+        ComboSubGrupo.AddItem Planilha3.Cells(LIN, 16)
+
+Next LIN
+
+End If
+End Sub
+
+Private Sub CommandButton1_Click()
+
+Dim LIN As Long
+    LIN = Planilha1.Range("D3:D" & Rows.Count).Find(Empty).Row
+Dim Data As Date
+
+If ComboGrupo.Text = Planilha3.Range("F4").Text Then
+    
+    Data = VBA.CDate(TData.Text)
+
+        With Planilha1
+        .Cells(LIN, 4) = Data
+        .Cells(LIN, 6) = ComboGrupo.Text
+        .Cells(LIN, 7) = ComboSubGrupo.Text
+        .Cells(LIN, 8) = TDescrição.Text
+        .Cells(LIN, 9) = TValor.Text
+        .Cells(LIN, 11) = Planilha1.Cells(LIN - 1, 11) + Planilha1.Cells(LIN, 9)
+        End With
+End If
+
+If ComboGrupo.Text = Planilha3.Range("H4").Text Then
+
+    Data = VBA.CDate(TData.Text)
+
+        With Planilha1
+        .Cells(LIN, 4) = Data
+        .Cells(LIN, 6) = ComboGrupo.Text
+        .Cells(LIN, 7) = ComboSubGrupo.Text
+        .Cells(LIN, 8) = TDescrição.Text
+        .Cells(LIN, 9) = TValor.Text
+        .Cells(LIN, 11) = Planilha1.Cells(LIN - 1, 11) + Planilha1.Cells(LIN, 9)
+        End With
+End If
+
+If ComboGrupo.Text = Planilha3.Range("J4").Text Then
+
+ Data = VBA.CDate(TData.Text)
+
+        With Planilha1
+        .Cells(LIN, 4) = Data
+        .Cells(LIN, 6) = ComboGrupo.Text
+        .Cells(LIN, 7) = ComboSubGrupo.Text
+        .Cells(LIN, 8) = TDescrição.Text
+        .Cells(LIN, 10) = TValor.Text
+        .Cells(LIN, 11) = Planilha1.Cells(LIN - 1, 11) - Planilha1.Cells(LIN, 10)
+        End With
+End If
+
+If ComboGrupo.Text = Planilha3.Range("L4").Text Then
+
+Data = VBA.CDate(TData.Text)
+
+        With Planilha1
+        .Cells(LIN, 4) = Data
+        .Cells(LIN, 6) = ComboGrupo.Text
+        .Cells(LIN, 7) = ComboSubGrupo.Text
+        .Cells(LIN, 8) = TDescrição.Text
+        .Cells(LIN, 10) = TValor.Text
+        .Cells(LIN, 11) = Planilha1.Cells(LIN - 1, 11) - Planilha1.Cells(LIN, 10)
+        End With
+End If
+
+If ComboGrupo.Text = Planilha3.Range("N4").Text Then
+
+Data = VBA.CDate(TData.Text)
+
+        With Planilha1
+        .Cells(LIN, 4) = Data
+        .Cells(LIN, 6) = ComboGrupo.Text
+        .Cells(LIN, 7) = ComboSubGrupo.Text
+        .Cells(LIN, 8) = TDescrição.Text
+        .Cells(LIN, 10) = TValor.Text
+        .Cells(LIN, 11) = Planilha1.Cells(LIN - 1, 11) - Planilha1.Cells(LIN, 10)
+        End With
+End If
+
+If ComboGrupo.Text = Planilha3.Range("P4").Text Then
+
+Data = VBA.CDate(TData.Text)
+
+        With Planilha1
+        .Cells(LIN, 4) = Data
+        .Cells(LIN, 6) = ComboGrupo.Text
+        .Cells(LIN, 7) = ComboSubGrupo.Text
+        .Cells(LIN, 8) = TDescrição.Text
+        .Cells(LIN, 10) = TValor.Text
+        .Cells(LIN, 11) = Planilha1.Cells(LIN - 1, 11) - Planilha1.Cells(LIN, 10)
+        End With
+End If
+
+Unload Me
+
+End Sub
+
+Private Sub Image1_BeforeDragOver(ByVal Cancel As MSForms.ReturnBoolean, ByVal Data As MSForms.DataObject, ByVal X As Single, ByVal Y As Single, ByVal DragState As MSForms.fmDragState, ByVal Effect As MSForms.ReturnEffect, ByVal Shift As Integer)
+
+End Sub
+
+Private Sub TData_Change()
+
+    Dim texto As String
+    Dim pesquisa As String
+    
+    If Len(TData) = 2 Then
+        TData = TData & "/"
+    ElseIf Len(TData) = 5 Then
+        TData = TData & "/" & Year(Date)
+    End If
+
+End Sub
+
+
+Private Sub UserForm_Activate()
+Dim totLIN As Long
+Dim LIN As Long
+
+'Grupo
+totLIN = Planilha3.Range("d" & Rows.Count).End(xlUp).Row
+ComboGrupo.Clear
+
+For LIN = 5 To totLIN
+
+    ComboGrupo.AddItem Planilha3.Cells(LIN, 4)
+       
+Next LIN
+
+End Sub
