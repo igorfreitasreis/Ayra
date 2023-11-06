@@ -1,0 +1,39 @@
+Private Sub Workbook_Open()
+
+With Planilha3.Sort
+
+.SortFields.Clear
+
+.SortFields.Add Key:=Range("F5")
+.SetRange Range("F5:F40")
+.Apply
+
+.SortFields.Clear
+
+.SortFields.Add Key:=Range("H5")
+.SetRange Range("H5:H40")
+.Apply
+
+.SortFields.Clear
+
+.SortFields.Add Key:=Range("J5")
+.SetRange Range("J5:J40")
+.Apply
+
+.SortFields.Clear
+
+.SortFields.Add Key:=Range("L5")
+.SetRange Range("L5:L40")
+.Apply
+
+.SortFields.Clear
+
+.SortFields.Add Key:=Range("N5")
+.SetRange Range("N5:N40")
+.Apply
+
+End With
+
+Planilha1.Select
+
+End Sub
