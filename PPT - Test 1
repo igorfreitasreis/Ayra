@@ -1,0 +1,69 @@
+Sub CreateAIPresentation()
+    ' Create a new PowerPoint application and presentation
+    Dim PowerPointApp As Object
+    Set PowerPointApp = CreateObject("PowerPoint.Application")
+    PowerPointApp.Visible = True
+    Dim pptPresentation As Object
+    Set pptPresentation = PowerPointApp.Presentations.Add
+    
+    ' General presentation settings
+    With pptPresentation
+        .PageSetup.SlideSize = ppSlideSizeOnScreen16x9
+        .SlideMaster.Background.Fill.PresetGradient msoGradientHorizontal, 1, msoGradientLateSunset
+    End With
+    
+    ' Define slide titles and contents
+    Dim slideTitles As Variant
+    Dim slideContents As Variant
+    slideTitles = Array("The Dawn of Artificial Intelligence", "The Pioneers of AI", "The AI Winter", "The Rise of Machine Learning", "AI Today and Tomorrow")
+    slideContents = Array("The concept of artificial beings with intelligence dates back to ancient myths and legends. The formal idea of AI as a scientific discipline began in the mid-20th century. The term 'Artificial Intelligence' was first coined by John McCarthy in 1956 at the Dartmouth Conference.", _
+                          "Alan Turing's work on the Turing Test set the foundation for machine intelligence. Early AI research focused on problem-solving and symbolic methods. The development of the first AI programs like Logic Theorist and General Problem Solver.", _
+                          "AI research faced technical and funding challenges in the 1970s and 1980s. The limitations of early AI led to a period known as the 'AI Winter'. Despite setbacks, foundational work in machine learning and knowledge-based systems continued.", _
+                          "The resurgence of AI in the late 1990s and early 2000s with the advent of the internet and greater computational power. The shift from knowledge-based systems to data-driven machine learning approaches. Breakthroughs in deep learning and neural networks leading to modern AI applications.", _
+                          "AI is now pervasive in technology, from search engines to personal assistants. Ongoing debates about ethics, job displacement, and AI's role in society. The future of AI: potential advancements in general intelligence and solving complex global challenges.")
+    
+    ' Loop to create slides
+    Dim i As Integer
+    For i = 0 To UBound(slideTitles)
+        ' Add a new slide
+        Dim slide As Object
+        Set slide = pptPresentation.Slides.Add(i + 1, ppLayoutText)
+        
+        ' Set slide transition
+        slide.SlideShowTransition.AdvanceOnTime = True
+        slide.SlideShowTransition.AdvanceTime = 5 ' seconds
+        slide.SlideShowTransition.EntryEffect = ppEffectCoverDown
+        
+        ' Set title and content
+        slide.Shapes(1).TextFrame.TextRange.Text = slideTitles(i)
+        slide.Shapes(2).TextFrame.TextRange.Text = slideContents(i)
+        
+        ' Format title
+        With slide.Shapes(1).TextFrame.TextRange
+            .Font.Name = "Arial"
+            .Font.Size = 44
+            .Font.Bold = msoTrue
+            .Font.Color.RGB = RGB(255, 255, 255)
+            .ParagraphFormat.Alignment = ppAlignCenter
+        End With
+        
+        ' Format content
+        With slide.Shapes(2).TextFrame.TextRange
+            .Font.Name = "Arial"
+            .Font.Size = 24
+            .Font.Color.RGB = RGB(255, 255, 255)
+            .ParagraphFormat.Alignment = ppAlignLeft
+        End With
+        
+        ' Set background
+        slide.FollowMasterBackground = False
+        slide.Background.Fill.PresetGradient msoGradientDiagonalUp, 1, msoGradientBrass
+        
+        ' Add animation to content
+        slide.TimeLine.MainSequence.AddEffect _
+            slide.Shapes(2), msoAnimEffectFade, , msoAnimTriggerAfterPrevious
+    Next i
+    
+    ' Start the presentation
+    pptPresentation.SlideShowSettings.Run
+End Sub
